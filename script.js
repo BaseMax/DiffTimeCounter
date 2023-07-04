@@ -1,4 +1,5 @@
-const elm_text = document.querySelector(".text");
+const elm_input = document.querySelector("#input");
+const elm_output = document.querySelector("#output");
 
 /*
 18:45  23:15  
@@ -27,7 +28,8 @@ const split_ranges = (text) => {
 const extract_times = (text) => {
     const ranges = split_ranges(text);
     let sum = 0;
-  
+
+    elm_output.innerHTML = "";
     for (const range of ranges) {
         const startTime = range[0];
         const endTime = range[1];
@@ -40,14 +42,17 @@ const extract_times = (text) => {
         const diff = end - start;
 
         console.log(`Start: ${startTime}, End: ${endTime}, Diff: ${diff} minutes`);
+        elm_output.innerHTML += `Start: ${startTime}, End: ${endTime}, Diff: ${diff} minutes<br>`;
+
         sum += diff;
     }
 
     console.log(`Sum of all differences: ${sum} minutes`);
+    elm_output.innerHTML += `Sum of all differences: ${sum} minutes`;
 };
 
 // Events
-elm_text.addEventListener('change', () => {
-    const inputText = elm_text.value;
+elm_input.addEventListener('change', () => {
+    const inputText = elm_input.value;
     extract_times(inputText);
 });
