@@ -7,7 +7,7 @@ This web page allows you to calculate and sum the differences between pairs of s
 1. Open the web page in a web browser.
 2. Enter the time ranges in the following format:
     Each line represents a separate time range, with the start time followed by the end time separated by a space. You can enter as many ranges as needed.
-3. As you enter the time ranges, the page will automatically update and display the difference for each range and the total sum of all differences.
+4. As you enter the time ranges, the page will automatically update and display the difference for each range and the total sum of all differences.
 
 ## Example
 
