@@ -25,6 +25,12 @@ const split_ranges = (text) => {
     return ranges;
 };
   
+const convertToHoursMinutes = (totalMinutes) => {
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+    return `${hours} hours ${minutes} minutes`;
+};
+
 const extract_times = (text) => {
     const ranges = split_ranges(text);
     let sum = 0;
@@ -47,12 +53,21 @@ const extract_times = (text) => {
         sum += diff;
     }
 
-    console.log(`Sum of all differences: ${sum} minutes`);
-    elm_output.innerHTML += `Sum of all differences: ${sum} minutes`;
+    console.log(`Sum of all differences: ${sum} minutes = ${convertToHoursMinutes(sum)}`);
+
+    elm_output.innerHTML += `Sum of all differences: ${sum} minutes = ${convertToHoursMinutes(sum)}`;
+    
+};
+
+const run_update = () => {
+    const inputText = elm_input.value;
+    extract_times(inputText);
 };
 
 // Events
 elm_input.addEventListener('change', () => {
-    const inputText = elm_input.value;
-    extract_times(inputText);
+    run_update();
+});
+window.addEventListener('load', function() {
+    run_update();
 });
